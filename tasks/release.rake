@@ -151,6 +151,10 @@ HEADER
   end
 
   if ENV['STAGE']
-    raise "Invalid STAGE specified '#{ENV['STAGE']}' that did not match any stage"
+    if ENV['LAST_STAGE'] == ENV['STAGE']
+      puts "LAST_STAGE specified '#{ENV['LAST_STAGE']}', later stages were skipped"
+    else
+      raise "Invalid STAGE specified '#{ENV['STAGE']}' that did not match any stage"
+    end
   end
 end
