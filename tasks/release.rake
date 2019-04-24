@@ -27,6 +27,9 @@ def stage(stage_name, description, options = {})
   elsif !ENV['STAGE'].nil?
     puts "Skipping Stage: #{stage_name} - #{description}"
   end
+  if ENV['LAST_STAGE'] == stage_name
+    ENV['STAGE'] = ENV['LAST_STAGE']
+  end
 end
 
 desc 'Perform a release'
