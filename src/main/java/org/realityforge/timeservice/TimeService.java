@@ -1,7 +1,9 @@
 package org.realityforge.timeservice;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.annotation.Nonnull;
 
@@ -10,11 +12,20 @@ public interface TimeService
   long currentTimeMillis();
 
   @Nonnull
-  Date currentDate();
+  default Date currentDate()
+  {
+    return new Date( currentTimeMillis() );
+  }
 
   @Nonnull
-  LocalDate currentLocalDate();
+  default LocalDate currentLocalDate()
+  {
+    return currentLocalDateTime().toLocalDate();
+  }
 
   @Nonnull
-  LocalDateTime currentLocalDateTime();
+  default LocalDateTime currentLocalDateTime()
+  {
+    return LocalDateTime.ofInstant( Instant.ofEpochMilli( currentTimeMillis() ), ZoneId.systemDefault() );
+  }
 }

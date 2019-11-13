@@ -1,11 +1,5 @@
 package org.realityforge.timeservice;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
-import javax.annotation.Nonnull;
 import javax.annotation.Resource;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -26,33 +20,7 @@ public class TimeServiceImpl
   private TransactionSynchronizationRegistry _registry;
 
   @Override
-  public long currentTimeMillis()
-  {
-    return now();
-  }
-
-  @Nonnull
-  @Override
-  public Date currentDate()
-  {
-    return new Date( now() );
-  }
-
-  @Nonnull
-  @Override
-  public LocalDate currentLocalDate()
-  {
-    return currentLocalDateTime().toLocalDate();
-  }
-
-  @Nonnull
-  @Override
-  public LocalDateTime currentLocalDateTime()
-  {
-    return LocalDateTime.ofInstant( Instant.ofEpochMilli( now() ), ZoneId.systemDefault() );
-  }
-
-  private synchronized long now()
+  public synchronized long currentTimeMillis()
   {
     final String key = TimeService.class.getName() + KEY_SUFFIX;
     final Long now = (Long) _registry.getResource( key );
