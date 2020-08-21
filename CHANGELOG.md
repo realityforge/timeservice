@@ -2,6 +2,8 @@
 
 ### Unreleased
 
+* Upgrade the `javax` artifact to version `8.0`.
+
 ### [v0.02](https://github.com/realityforge/timeservice/tree/v0.02) (2019-11-13) · [Full Changelog](https://github.com/realityforge/timeservice/compare/v0.01...v0.02)
 
 * Upgrade the `org.realityforge.javax.annotation` artifact to version `1.0.1`.
