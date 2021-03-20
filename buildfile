@@ -1,6 +1,8 @@
 require 'buildr/git_auto_version'
 require 'buildr/gpg'
 
+Buildr::MavenCentral.define_publish_tasks(:profile_name => 'org.realityforge', :username => 'realityforge')
+
 desc 'timeservice: A simple EE service to get constant now within transaction'
 define 'timeservice' do
   project.group = 'org.realityforge.timeservice'
